@@ -1,0 +1,487 @@
+
+        /* general */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+         /* Style dyal la page */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        /* entete m3a l fond */
+        .entete {
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #f5f7fa 0%, #ffffff 100%);
+            position: relative;
+        }
+        /* Barre dyal navigation */
+        .barre-navigation {
+            padding: 1.5rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e1e8ed;
+        }
+        /* Logo  */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+            font-family: monospace;
+        }
+
+        .logo span {
+            color: #0066cc;
+        }
+         /* Menu dyal navigation */
+        .menu-navigation {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .menu-navigation a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            letter-spacing: 0.3px;
+        }
+
+        .menu-navigation a:hover {
+            color: #0066cc;
+        }
+        /* texte oul bloc code */
+
+        .contenu-principal {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 5% 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        /* Texte dyal l'introduction */
+        .texte-introduction h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .texte-introduction .mot-accentue {
+            color: #0066cc;
+            font-weight: 700;
+        }
+
+        .texte-introduction p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+        /* Groupe dyal boutons */
+        .groupe-boutons {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        /* Style dyal boutons */
+        .bouton {
+            padding: 0.9rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            letter-spacing: 0.3px;
+        }
+
+        .bouton-principal {
+            background: #0066cc;
+            color: #ffffff;
+        }
+
+        .bouton-principal:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.25);
+        }
+
+        .bouton-secondaire {
+            background: transparent;
+            color: #0066cc;
+            border: 2px solid #0066cc;
+        }
+
+        .bouton-secondaire:hover {
+            background: #0066cc;
+            color: #ffffff;
+        }
+
+        .bloc-code {
+            background: #2d3748;
+            border-radius: 8px;
+            padding: 2.5rem;
+            color: #e2e8f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+           
+
+
+        }
+
+        .bloc-code::before {
+            content: '// Code React';
+            position: absolute;
+            top: 0.5rem;
+            right: 1.5rem;
+            font-size: 0.75rem;
+            color: #718096;
+        }
+
+        .code-ligne {
+            margin-bottom: 0.5rem;
+        }
+
+        .code-keyword {
+            color: #63b3ed;
+        }
+
+        .code-string {
+            color: #68d391;
+        }
+
+        .code-function {
+            color: #f6ad55;
+        }
+         /* Section dyal fonctionnalités */
+        .section-fonctionnalites {
+            padding: 6rem 8%;
+            background: #ffffff;
+        }
+
+        .titre-section {
+            text-align: center;
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .sous-titre-section {
+            text-align: center;
+            font-size: 1.05rem;
+            color: #4a5568;
+            margin-bottom: 4rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Grille dyal fonctionnalités */
+        .grille-fonctionnalites {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* Carte dyal fonctionnalité */
+        .carte-fonctionnalite {
+            background: #f7fafc;
+            padding: 2.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #0066cc;
+        }
+
+        .carte-fonctionnalite:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+            background: #ffffff;
+        }
+
+        .icone-fonctionnalite {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            padding: 0.8rem 1rem;
+            background: #ebf4ff;
+            color: #0066cc;
+            border-radius: 6px;
+            font-weight: 700;
+            font-family: monospace;
+        }
+
+        .carte-fonctionnalite h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .carte-fonctionnalite p {
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        /* SECTION DYAL STATISTIQUES */
+        .section-statistiques {
+            padding: 5rem 8%;
+            background: #2d3748;
+            color: #ffffff;
+        }
+
+        .grille-statistiques {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .element-statistique h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            font-family: monospace;
+            color: #63b3ed;
+        }
+
+        .element-statistique p {
+            font-size: 1.05rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .section-processus {
+            padding: 6rem 8%;
+            background: #f7fafc;
+        }
+
+        .conteneur-etapes {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .etape {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .etape:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-color: #0066cc;
+        }
+
+        .numero-etape {
+            width: 80px;
+            height: 80px;
+            background: #0066cc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+            font-family: monospace;
+        }
+
+        .contenu-etape h3 {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .contenu-etape p {
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        /* SECTION DYAL Technologies */  
+        .section-technologies {
+            padding: 6rem 8%;
+            background: #ffffff;
+        }
+
+        .grille-technologies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .carte-technologie {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .carte-technologie:hover {
+            border-color: #0066cc;
+            transform: translateY(-3px);
+        }
+
+        .nom-technologie {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            font-family: monospace;
+        }
+
+        .version-technologie {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-top: 0.3rem;
+        }
+        /* CTA final */
+        .section-appel-action {
+            padding: 5rem 8%;
+            background: #2d3748;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .section-appel-action h2 {
+            font-size: 2.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .section-appel-action p {
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+            color: #e2e8f0;
+        }
+        /* lteht dyal la page */
+        .pied-page {
+            padding: 3rem 8%;
+            background: #1a202c;
+            color: #e2e8f0;
+        }
+
+        .contenu-pied-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .informations-institutionnelles {
+            flex: 1;
+        }
+
+        .informations-institutionnelles h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .informations-institutionnelles p {
+            color: #a0aec0;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .liens-rapides {
+            flex: 1;
+        }
+
+        .liens-rapides h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .liens-rapides ul {
+            list-style: none;
+        }
+
+        .liens-rapides a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 2;
+            transition: color 0.3s;
+        }
+
+        .liens-rapides a:hover {
+            color: #63b3ed;
+        }
+
+        .copyright {
+            width: 100%;
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #2d3748;
+            color: #718096;
+            font-size: 0.85rem;
+        }
+        /* Responsive */
+        @media (max-width: 968px) {
+            .contenu-principal {
+                grid-template-columns: 1fr;
+                padding: 4rem 5% 3rem;
+            }
+
+            .texte-introduction h1 {
+                font-size: 2.2rem;
+            }
+
+            .menu-navigation {
+                display: none;
+            }
+
+            .etape {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .numero-etape {
+                margin: 0 auto;
+            }
+
+            .contenu-pied-page {
+                flex-direction: column;
+            }
+        }
+    
