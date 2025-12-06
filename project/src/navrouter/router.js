@@ -9,9 +9,10 @@ export default function Routers(){
     return <>
         <Routes>
             <Route path="/" element={<Homepage/>}/>
-            <Route path="/auth" element={<Signin />}/>
-            <Route path="/auth/signin" element={<Signin />}/>
-            <Route path="/auth/signup" element={<Signup />}/>
+            <Route path="/auth" element={<Signin />} />
+                <Route path="/auth/signin" element={<Signin />}/>
+                <Route path="/auth/signup" element={<Signup />}/>
+            <Route/>
         </Routes>
     </>
 
