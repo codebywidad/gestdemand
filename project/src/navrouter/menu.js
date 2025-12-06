@@ -12,6 +12,8 @@ export default function Menu (){
                 <li><a href="#contact">Contact</a></li>
                 <li><Link to="/auth/signin">Sign in</Link></li>
                 <li><Link to="/auth/signup">Sign up</Link></li>
+                <li><Link to="/layout">Layout</Link></li>
+                <li><Link to="/logout">log out</Link></li>
             </ul>
     </nav>
     </> 
