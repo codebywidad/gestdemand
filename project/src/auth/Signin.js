@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useEffect, useState} from "react";
 import axios from 'axios';
 import { Link } from "react-router";
 
@@ -6,20 +6,23 @@ export default function Signin() {
 const [email,setEmail] = useState("")
 const [pw,setPw] = useState("")
 const [liste,setListe] = useState([])
-const [perss,setPer] = useState({"exist" : "none"})
+const [perss,setPer] = useState({})
 const [err,setErr] = useState("")
+
+ useEffect(()=>{
+                    axios.get(`https://670ed5b73e7151861655eaa3.mockapi.io/Stagiaire`)
+                    .then((res) => {const pers = res.data; setListe(pers);  });
+                    console.log(liste);
+                    console.log(perss);
+    },[]); 
 
 function checkemail(e){
     e.preventDefault()
 
-    axios.get(`https://670ed5b73e7151861655eaa3.mockapi.io/Stagiaire`)
-         .then((res) => {const pers = res.data; setListe(pers); })
-         .then(liste.map((per)=>{if(per.email == email) setPer(per)}));
-    console.log(liste);
+    setPer(liste.find((per)=> per.email === email ));
     console.log(perss);
-
-    if(perss.exist == "none") setErr("email")
-    else { if (perss.MotDePasse != pw) setErr("pw")
+    if(!perss) setErr("email")
+    else { if (perss.MotDePasse !== pw) setErr("pw")
            else {setErr("connected");}
     }
     

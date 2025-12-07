@@ -28,7 +28,8 @@
             background: #ffffff;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             position: sticky;
-            top: 0;
+            top: 0; 
+        /* temporary */     overflow: scroll;
             z-index: 100;
             border-bottom: 1px solid #e1e8ed;
         }
@@ -467,9 +468,9 @@
                 font-size: 2.2rem;
             }
 
-            .menu-navigation {
+            /* .menu-navigation {
                 display: none;
-            }
+            } */
 
             .etape {
                 grid-template-columns: 1fr;
