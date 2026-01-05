@@ -1,32 +1,49 @@
 import { useEffect, useState} from "react";
 import axios from 'axios';
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 export default function Signin() {
-const [email,setEmail] = useState("")
-const [pw,setPw] = useState("")
-const [liste,setListe] = useState([])
-const [perss,setPer] = useState({})
-const [err,setErr] = useState("")
+const [email,setEmail] = useState("");
+const [pw,setPw] = useState("");
+const [liste,setListe] = useState([]);
+const [err,setErr] = useState("");
+const navigate = useNavigate();
 
- useEffect(()=>{
-                    axios.get(`https://670ed5b73e7151861655eaa3.mockapi.io/Stagiaire`)
-                    .then((res) => {const pers = res.data; setListe(pers);  });
-                    console.log(liste);
-                    console.log(perss);
-    },[]); 
 
-function checkemail(e){
-    e.preventDefault()
+useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+            const res = await axios.get(
+                "https://6935e745fa8e704dafbf386c.mockapi.io/users"
+            );
+            setListe(res.data);
+            } catch (error) {
+            console.error(error);
+            }
+        };
 
-    setPer(liste.find((per)=> per.email === email ));
-    console.log(perss);
-    if(!perss) setErr("email")
-    else { if (perss.MotDePasse !== pw) setErr("pw")
-           else {setErr("connected");}
-    }
-    
+        fetchUsers();
+        }, []);
+
+function checkemail(e) {
+  e.preventDefault();
+
+  const user = liste.find((per) => per.email === email);
+
+  if (!user) {
+    setErr("email");
+    return;
+  }
+
+  if (user.MotDePasse !== pw) {
+    setErr("pw");
+    return;
+  }
+
+  setErr("connected");
+  navigate("/");
 }
+
 
 
     return <>
@@ -34,8 +51,8 @@ function checkemail(e){
         <div className="auth-box">
             <h1><Link to="/">se connecter</Link></h1>
                 <form onSubmit={(e) => checkemail(e)}>
-                    <input type="email" nom="email" placeholder="Email" value={email} required  onChange={(e)=>setEmail(e.target.value)} />
-                    <input type="password" nom="password" placeholder="Mot de passe" value={pw} required onChange={(e)=>setPw(e.target.value)} />
+                    <input type="email" name="email" placeholder="Email" value={email} required  onChange={(e)=>setEmail(e.target.value)} />
+                    <input type="text" name="password" placeholder="Mot de passe" value={pw} required onChange={(e)=>setPw(e.target.value)} />
                     <ul> 
                         <li>{err}</li>        
                     </ul>
