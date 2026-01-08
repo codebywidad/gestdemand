@@ -22,14 +22,14 @@
         /* Barre dyal navigation */
         .barre-navigation {
             padding: 1.5rem 8%;
-            display: flex;
-            justify-content: space-between;
+            display: flexbox;
+            justify-content: space-around;
             align-items: center;
             background: #ffffff;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             position: sticky;
             top: 0; 
-        /* temporary */     overflow: scroll;
+        /* temporary */     overflow: hidden;
             z-index: 100;
             border-bottom: 1px solid #e1e8ed;
         }

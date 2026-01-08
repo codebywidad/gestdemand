@@ -3,16 +3,16 @@
 
 export default function Footer() {
  return <>
- <section class="pied-page">
-        <div class="contenu-pied-page">
-            <div class="informations-institutionnelles">
+ <section className="pied-page">
+        <div className="contenu-pied-page">
+            <div className="informations-institutionnelles">
                 <h4>Institut Spécialisé de Technologie Appliquée Hay Salam</h4>
                 <p>Filière : Développement Digital - Option Web Full Stack</p>
                 <p>Module : M204 - Développement front-end</p>
                 <p>Formateur : Khalid MZIBRA</p>
             </div>
 
-            <div class="liens-rapides">
+            <div className="liens-rapides">
                 <h4>Liens utiles</h4>
                 <ul>
                     <li><a href="#">Documentation technique</a></li>
@@ -22,7 +22,7 @@ export default function Footer() {
                 </ul>
             </div>
 
-            <div class="liens-rapides">
+            <div className="liens-rapides">
                 <h4>Ressources</h4>
                 <ul>
                     <li><a href="#">React Documentation</a></li>
@@ -33,7 +33,7 @@ export default function Footer() {
             </div>
         </div>
         
-        <div class="copyright">
+        <div className="copyright">
             <p>&copy; 2025 GestDemand - Mini-Projet React. Tous droits réservés.</p>
         </div>
  </section>

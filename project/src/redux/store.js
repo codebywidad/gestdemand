@@ -1,10 +1,13 @@
-// actions 
+import { configureStore } from '@reduxjs/toolkit';
+import userReducer from './userreducer';
+import {colorMiddleware} from "./middlewares"
 
-export const storeclient = (client) => ({type : "storeclient", payload: client})
-   
-
-// reducer
-
-
-
+const store = configureStore({
+  reducer: {
+    USER : userReducer, 
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(colorMiddleware),
+});
+export default store;
 

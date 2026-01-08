@@ -1,16 +1,27 @@
 import { useEffect, useState} from "react";
 import axios from 'axios';
 import { Link, useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/userreducer";
+
+
 
 export default function Signin() {
+const navigate = useNavigate(); 
 const [email,setEmail] = useState("");
 const [pw,setPw] = useState("");
 const [liste,setListe] = useState([]);
 const [err,setErr] = useState("");
-const navigate = useNavigate();
+const dispatch = useDispatch();
+const isLog = useSelector((state)=>state.USER.isLogged)
+
 
 
 useEffect(() => {
+        if(isLog){
+            navigate("/");
+        } 
+
         const fetchUsers = async () => {
             try {
             const res = await axios.get(
@@ -41,7 +52,8 @@ function checkemail(e) {
   }
 
   setErr("connected");
-  navigate("/");
+  dispatch(login(user));
+  navigate("/layout");
 }
 
 
