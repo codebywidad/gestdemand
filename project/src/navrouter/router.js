@@ -9,6 +9,9 @@ import Profile from '../layout/components/profile'
 import Couleur from '../layout/components/couleur'
 import Users from '../layout/components/listeusers'
 import User from '../layout/components/user'
+import AddDemande from '../layout/components/nonadmin/demandeAdd'
+import ViewDemande from '../layout/components/nonadmin/demandeView'
+
 
 export default function Routers(){
     
@@ -26,8 +29,8 @@ export default function Routers(){
                 <Route path="accueil" element={<Acceuil />}/>
                 <Route path="profile" element={<Profile/> }/>
                 <Route path="modifierCouleur" element={ <Couleur/> }/>
-                <Route path="demandes" element={ <AddDemande/> }/>
-                <Route path="ajouterDemande" element={ <ViewDemande/> }/>
+                <Route path="demandes" element={ <ViewDemande /> }/>
+                <Route path="ajouterDemande" element={ <AddDemande />  }/>
                 <Route path="listerUtilisateurs" element={<Users/>}/>
                 <Route path="AjouterUtilisateur" element={<User/>}/>
             </Route>

@@ -7,25 +7,28 @@ export default function Couleur() {
   const user = useSelector((state) => state.USER.user);
   const dispatch = useDispatch();
 
-  return (
-    <>
-      <h3>Changer couleur</h3>
+  const age = user.age>=15?true:false
 
-      <input
-        type="color"
-        value={previewColor}
-        onChange={(e) => setPreviewColor(e.target.value)}
-      />
+  return (<>
+          {age && (
+          <>
+            <h3>Changer couleur</h3>
 
-      <button
-        className="btn btn-primary ms-2"
-        onClick={() => {
-          dispatch(changeColor(previewColor));
-          
-        }}
-      >
-        Confirmer
-      </button>
-    </>
-  );
+            <input
+              type="color"
+              value={previewColor}             
+              onChange={(e) => setPreviewColor(e.target.value)}
+            />
+
+            <button
+              className="btn btn-primary ms-2"
+              onClick={() => {
+                dispatch(changeColor(previewColor));
+              }}
+            >Confirmer</button>
+          </>
+        )}
+        
+        {!age && <h1>votre couleur {previewColor}    </h1>}
+        </>);
 }
