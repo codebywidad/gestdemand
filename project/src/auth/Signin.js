@@ -2,7 +2,7 @@ import { useEffect, useState} from "react";
 import axios from 'axios';
 import { Link, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../redux/userreducer";
+import { fetchDemande, login } from "../redux/userreducer";
 
 
 
@@ -52,7 +52,9 @@ function checkemail(e) {
   }
 
   setErr("connected");
+
   dispatch(login(user));
+  dispatch(fetchDemande(user.id));
   navigate("/layout");
 }
 
