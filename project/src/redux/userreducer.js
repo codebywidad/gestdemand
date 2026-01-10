@@ -41,6 +41,8 @@ const userSlice = createSlice ({
             localStorage.removeItem("user")
             localStorage.removeItem("isLogged")
             localStorage.removeItem("demande")
+            
+            
         },
         changeColor : (state,action) =>{
             state.user.couleur = action.payload;

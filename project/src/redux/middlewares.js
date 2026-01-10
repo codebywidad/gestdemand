@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { adminlogout } from "./adminreducer";
+
 
 export const colorMiddleware = store => next => action => {
     console.log("Action dispatched:", action.type);
@@ -19,21 +20,9 @@ export const colorMiddleware = store => next => action => {
     console.log("after action");
   }
 
-  // if (action.type === "user/fetchDemande") {
-
-  //   const id = store.getState().USER.user.id;
-
-  //   try {
-  //           const res = axios.get(
-  //               "https://6935e745fa8e704dafbf386c.mockapi.io/demandes", { params: { id }}
-  //           );
-  //           console.log(res)  
-  //       } catch (error) {
-  //           console.error(error);
-  //       }
-
-    
-  // }
+    if (action.type === "user/logout") {
+    store.dispatch(adminlogout());
+  }
 
   return next(action);
 };

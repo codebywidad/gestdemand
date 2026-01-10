@@ -2,8 +2,11 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Layout.css";
 
+
+
 function Sidemenu() {
   const user = useSelector((state) => state.USER.user);
+   
 
   if (!user) return null;
 
@@ -61,7 +64,7 @@ function Sidemenu() {
                     </li>
 
                     <li>
-                    <NavLink to="/layout/demandes-admin" className="menu-link">
+                    <NavLink to="/layout/listeDemande" className="menu-link">
                         Gérer demandes
                     </NavLink>
                     </li>

@@ -16,11 +16,10 @@ const navigate = useNavigate()
             display:"flex",
             alignItems:"center",
             justifyContent:"space-around",
-
             borderBottom:`4px solid ${previewColor}`,
             boxShadow:`0 0 15px ${previewColor}`
         }}>
-        <img src={user.photo} style={{width:'40px',height:"40px", borderRadius:'50%'}}/>
+        <img src={user.photo || null} alt="pdp" style={{width:'40px',height:"40px", borderRadius:'50%'}}/>
         <h1>
         {user.nom}{" "}
         {user.prenom}{" "}

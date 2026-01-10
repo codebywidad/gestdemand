@@ -7,10 +7,11 @@ import Auth from '../auth/auth'
 import Acceuil from '../layout/components/acceuil'
 import Profile from '../layout/components/profile'
 import Couleur from '../layout/components/couleur'
-import Users from '../layout/components/listeusers'
-import User from '../layout/components/user'
+import Users from '../layout/components/admin/listeusers'
+import AddUser from '../layout/components/admin/adduser.js'
 import AddDemande from '../layout/components/nonadmin/demandeAdd'
 import ViewDemande from '../layout/components/nonadmin/demandeView'
+import LDemande from '../layout/components/admin/listedemande.js'
 
 
 export default function Routers(){
@@ -32,7 +33,8 @@ export default function Routers(){
                 <Route path="demandes" element={ <ViewDemande /> }/>
                 <Route path="ajouterDemande" element={ <AddDemande />  }/>
                 <Route path="listerUtilisateurs" element={<Users/>}/>
-                <Route path="AjouterUtilisateur" element={<User/>}/>
+                <Route path="AjouterUtilisateur" element={<AddUser />}/>
+                <Route path="listeDemande" element={<LDemande/>}/>
             </Route>
                 
             
