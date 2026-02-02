@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../redux/userreducer";
 
 export default function Header({ previewColor }) {
@@ -23,8 +23,8 @@ export default function Header({ previewColor }) {
     >
       <div className="container-fluid">
         {/* Brand / Logo Area */}
-        <div className="navbar-brand fw-bold d-flex align-items-center">
-          
+        <div className="navbar-brand fw-bold d-flex align-items-center gap-5">
+          <Link to="/" className="text-decoration-none text-dark d-flex align-items-center">{"< Retourner"}</Link>
           <span className="d-none d-sm-inline">MyDashboard</span>
         </div>
 

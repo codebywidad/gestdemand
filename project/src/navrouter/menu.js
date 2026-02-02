@@ -22,7 +22,7 @@ export default function Menu (){
                  }
                  {isLog && <>
                  <li><Link to="/layout">Layout</Link></li>
-                 <button onClick={()=>{dispatch(logout());setIsLogged(false)}}>log out</button>
+                 <button className="btn btn-dark" onClick={()=>{dispatch(logout());setIsLogged(false)}}>Log out</button>
                  </>}
 
 

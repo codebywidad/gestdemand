@@ -22,7 +22,8 @@
         /* Barre dyal navigation */
         .barre-navigation {
             padding: 1.5rem 8%;
-            display: flexbox;
+            display: flex;
+            
             justify-content: space-around;
             align-items: center;
             background: #ffffff;
@@ -50,6 +51,8 @@
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            align-items: center;
+            margin-bottom: 0!important;
         }
 
         .menu-navigation a {
