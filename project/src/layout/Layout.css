@@ -6,7 +6,7 @@
 
 /* Main area (nav + content) */
 .layout-main {  
-  height:100vh;
+  min-height:70vh;
   display: flex;
 }
 

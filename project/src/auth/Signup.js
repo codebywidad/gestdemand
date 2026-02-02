@@ -1,120 +1,97 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../redux/userreducer";
 import { useDispatch, useSelector } from "react-redux";
 
-
 export default function Signup() {
-const [nom,setNom] = useState("")
-const [prenom,setPrenom] = useState("")
-const [age,setAge] = useState("")
-const [pseudo,setPseudo] = useState("")
-const [couleur,setCouleur] = useState("#ffffff")
-const [Pays,setPays] = useState("")
-const [Devise,setDevise] = useState("")
-const [avatar,setAvatar] = useState("")
-const [photo,setPhotos] = useState("")
-const [email,setEmail] = useState("")
-const [pw,setPw] = useState("")
-const [confpw,setConf] = useState("")
-const [liste,setListe] = useState([])
-const [err,setErr] = useState("")
-const [refresh,setRefresh] = useState(false)
-const navigate = useNavigate()
-const dispatch = useDispatch()
-const isLog = useSelector((state)=>state.USER.isLogged)
+    // ... (Your existing state hooks remain the same)
+    const [nom, setNom] = useState(""); const [prenom, setPrenom] = useState("");
+    const [age, setAge] = useState(""); const [pseudo, setPseudo] = useState("");
+    const [couleur, setCouleur] = useState("#dfdfdf"); const [Pays, setPays] = useState("");
+    const [Devise, setDevise] = useState(""); const [avatar, setAvatar] = useState("");
+    const [photo, setPhotos] = useState(""); const [email, setEmail] = useState("");
+    const [pw, setPw] = useState(""); const [confpw, setConf] = useState("");
+    const [liste, setListe] = useState([]); const [err, setErr] = useState("");
+    const [refresh, setRefresh] = useState(false);
+    const navigate = useNavigate(); const dispatch = useDispatch();
+    const isLog = useSelector((state) => state.USER.isLogged);
 
-    useEffect(()=>{
-      if(isLog){
-            navigate("/");
-        } 
-                    axios.get(`https://6935e745fa8e704dafbf386c.mockapi.io/users`)
-                    .then((res) => {const pers = res.data; setListe(pers); });
-    },[refresh]);
-      
+    useEffect(() => {
+        if (isLog) navigate("/");
+        axios.get(`https://6935e745fa8e704dafbf386c.mockapi.io/users`)
+            .then((res) => setListe(res.data));
+    }, [refresh, isLog, navigate]);
 
-function handleSignup(e) {
-  e.preventDefault();
-  setRefresh(!refresh);
-  // 1. check if email already exists
-  const existingUser = liste.find((per) => per.email === email);
+    function handleSignup(e) {
+        e.preventDefault();
+        if (liste.find((per) => per.email === email)) { setErr("L'email existe déjà"); return; }
+        if (pw !== confpw) { setErr("Les mots de passe ne correspondent pas"); return; }
 
-  if (existingUser) {
-    setErr("Email already exists");
-    return;
-  }
+        const newUser = { nom, prenom, age, pseudo, couleur, Pays, Devise, avatar, photo, email, MotDePasse: pw };
 
-  // 2. check passwords match
-  if (pw !== confpw) {
-    setErr("Passwords do not match");
-    return;
-  }
+        axios.post("https://6935e745fa8e704dafbf386c.mockapi.io/users", newUser)
+            .then(() => {
+                dispatch(login(newUser));
+                navigate("/layout");
+            })
+            .catch(() => setErr("Erreur lors de la création"));
+    }
 
-  // 3. create user object
-  const newUser = {
-    nom,
-    prenom,
-    age,
-    pseudo,
-    couleur,
-    Pays,
-    Devise,
-    avatar,
-    photo,
-    email,
-    MotDePasse: pw,
-  };
+    return (
+        <div className="min-vh-100 d-flex align-items-center justify-content-center py-5"
+        >
+            <div className="card shadow-lg border-0 rounded-4 p-4" style={{ width: "100%", maxWidth: "600px" }}>
+                <div className="card-body">
+                    <h2 className="text-center mb-4 fw-bold text-dark">Créer un compte</h2>
 
-  // 4. send to API
-  axios
-    .post("https://6935e745fa8e704dafbf386c.mockapi.io/users", newUser)
-    .then(() => { 
-      setErr("Account created successfully");
-      dispatch(login(newUser));
-      navigate("/layout");
-    })
-    .catch(() => {
-      setErr("Error creating account");
-    });
+                    <form onSubmit={handleSignup}>
+                        <div className="row g-3">
+                            <div className="col-md-6">
+                                <input type="text" className="form-control bg-light border-0" placeholder="Nom" required onChange={(e) => setNom(e.target.value)} />
+                            </div>
+                            <div className="col-md-6">
+                                <input type="text" className="form-control bg-light border-0" placeholder="Prénom" required onChange={(e) => setPrenom(e.target.value)} />
+                            </div>
+                            <div className="col-md-6">
+                                <input type="text" className="form-control bg-light border-0" placeholder="Pseudo" required onChange={(e) => setPseudo(e.target.value)} />
+                            </div>
+                            <div className="col-md-6">
+                                <input type="number" className="form-control bg-light border-0" placeholder="Âge" required onChange={(e) => setAge(e.target.value)} />
+                            </div>
+                            <div className="col-12">
+                                <input type="email" className="form-control bg-light border-0" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
+                            </div>
+                            <div className="col-md-6">
+                                <input type="password" className="form-control bg-light border-0" placeholder="Mot de passe" required onChange={(e) => setPw(e.target.value)} />
+                            </div>
+                            <div className="col-md-6">
+                                <input type="password" className="form-control bg-light border-0" placeholder="Confirmation" required onChange={(e) => setConf(e.target.value)} />
+                            </div>
+                            <div className="col-md-6">
+                                <input type="text" className="form-control bg-light border-0" placeholder="Pays" onChange={(e) => setPays(e.target.value)} />
+                            </div>
+                            <div className="col-md-6">
+                                <input type="text" className="form-control bg-light border-0" placeholder="Devise" onChange={(e) => setDevise(e.target.value)} />
+                            </div>
+                            <div className="col-12">
+                                <label className="form-label small fw-bold text-muted mb-1">Thème de couleur</label>
+                                <input type="color" className="form-control form-control-color w-100 border-0" value={couleur} onChange={(e) => setCouleur(e.target.value)} />
+                            </div>
+                        </div>
 
+                        {err && <div className="alert alert-warning py-2 small mt-3 text-center">{err}</div>}
 
-}
+                        <button type="submit" className="btn w-100 py-2 fw-bold mt-4 shadow-sm" style={{ backgroundColor: "#494949", color: "#fff" }}>
+                            S'inscrire
+                        </button>
+                    </form>
 
-
-
-    return <>
-    <div className="auth-container">
-        <div className="auth-box">
-            <h1><Link to="/">Créer un compte</Link></h1>
-                <form onSubmit={handleSignup}>
-                    <div className="form-grid">
-                        <input type="text" name="nom" placeholder="Nom" value={nom}   onChange={(e)=>setNom(e.target.value)} />
-                        <input type="text" name="prenom" placeholder="Prenom" value={prenom}   onChange={(e)=>setPrenom(e.target.value)} />
-                        <input type="text" name="pseudo" placeholder="Pseudo"  value={pseudo}   onChange={(e)=>setPseudo(e.target.value)} />
-                        <input type="number" name="age" placeholder="Age"  value={age}   onChange={(e)=>setAge(e.target.value)} />
-                    </div>
-                        <input type="email" name="email" placeholder="Email"  value={email}   onChange={(e)=>setEmail(e.target.value)} />
-                    <div className="form-grid">   
-                        <input type="password" name="pass" placeholder="Mot de passe"  value={pw}  onChange={(e)=>setPw(e.target.value)} />
-                        <input type="password" name="confpass" placeholder="confirmez Mot de passe" value={confpw}  onChange={(e)=>setConf(e.target.value)} />
-                        <input type="text" name="pays" placeholder="Pays"  value={Pays}   onChange={(e)=>setPays(e.target.value)} />
-                        <input type="text" name="devise" placeholder="Devise"  value={Devise}   onChange={(e)=>setDevise(e.target.value)} />
-                        <input type="text" name="photos" placeholder="Liens du photos"  value={photo}   onChange={(e)=>setPhotos(e.target.value)} />
-                        <input type="text" name="avatar" placeholder="Liens d'avatar" value={avatar}   onChange={(e)=>setAvatar(e.target.value)} />
-                    </div>    
-                        <input type="color" name="couleur" value={couleur}   onChange={(e)=>setCouleur(e.target.value)} />
-                        
-                        <input type="submit"  value="Créer" />
-                    
-                </form>
-                <ul> 
-                    <li>{err}</li>        
-                </ul>
-                <br></br>
-                <p>déja un compte ? <Link to="/auth/signin">connectez-vous</Link></p>
+                    <p className="text-center mt-3 mb-0 text-muted">
+                        Déjà un compte ? <Link to="/auth/signin" className="fw-bold text-dark text-decoration-none">Se connecter</Link>
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-    </>
-
+    );
 }

@@ -10,7 +10,7 @@ import "./Users.css"; // Fichier CSS pour les styles
 export default function Users() {
   const dispatch = useDispatch();
   const listeusers = useSelector(state => state.ADMIN.listeusers);
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedUser, setSelectedUser] = useState(null);
   const [editingUser, setEditingUser] = useState(null);
@@ -76,40 +76,44 @@ export default function Users() {
   return (
     <div className="container">
       <h2>Liste des Utilisateurs</h2>
-      
-      <div className="table-responsive">
-        <table className="table table-striped table-bordered">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nom</th>
-              <th>Prénom</th>
-              <th>Email</th>
-              <th>Téléphone</th>
-              <th>Couleur</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentItems.length > 0 ? (
-              currentItems.map((user) => (
-                <UserRow
-                  key={user.id}
-                  user={user}
-                  onView={handleView}
-                  onEdit={handleEdit}
-                  onDelete={handleDelete}
-                />
-              ))
-            ) : (
-              <tr>
-                <td colSpan="7" className="text-center">
-                  Aucun utilisateur trouvé
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+
+      <div className="card shadow-sm border-0 rounded-3">
+        <div className="card-body p-0"> {/* Remove padding to let table span full width */}
+          <div className="table-responsive">
+            <table className="table table-hover align-middle mb-0">
+              <thead className="table-light">
+                <tr>
+                  <th className="ps-4 py-3 border-0 text-secondary small text-uppercase fw-bold">ID</th>
+                  <th className="py-3 border-0 text-secondary small text-uppercase fw-bold">Nom </th>
+                  <th className="py-3 border-0 text-secondary small text-uppercase fw-bold">Prénom</th>
+                  <th className="py-3 border-0 text-secondary small text-uppercase fw-bold">email</th>
+                  <th className="py-3 border-0 text-secondary small text-uppercase fw-bold">Couleur</th>
+                  <th className="py-3 border-0 text-secondary small text-uppercase fw-bold text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="border-top-0">
+                {currentItems.length > 0 ? (
+                  currentItems.map((user) => (
+                    <UserRow
+                      key={user.id}
+                      user={user}
+                      onView={handleView}
+                      onEdit={handleEdit}
+                      onDelete={handleDelete}
+                    />
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="6" className="text-center py-5 text-muted">
+                      <i className="bi bi-person-x fs-2 d-block mb-2"></i>
+                      Aucun utilisateur trouvé
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
 
       {/* Pagination */}
@@ -118,11 +122,11 @@ export default function Users() {
           <div className="pagination-info">
             Page {currentPage} sur {totalPages} ({listeusers.length} utilisateurs)
           </div>
-          
+
           <nav>
             <ul className="pagination">
               <li className={currentPage === 1 ? "disabled" : ""}>
-                <button 
+                <button
                   className="btn btn-sm btn-secondary"
                   onClick={handlePrevious}
                   disabled={currentPage === 1}

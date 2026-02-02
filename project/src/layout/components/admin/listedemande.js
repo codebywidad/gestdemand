@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default function LDemande() {
   const dispatch = useDispatch();
-  const listedemandes = useSelector(state => state.ADMIN.listedemandes);
+  const listedemandes = useSelector(state => state.ADMIN.listedemandes).filter(el => el.statu == "pending" || el.statu == "approved" || el.statu == "rejected");
   
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState("all"); // all, pending, approved, rejected
