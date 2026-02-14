@@ -38,7 +38,7 @@ const adminSlice = createSlice ({
         adminlogout : (state) => {
             localStorage.removeItem("listedemandes");
             localStorage.removeItem("listeusers");
-            state.listedemandes = [];
+            state.listedemandes = []; 
             state.listeusers = [];
         },
     },

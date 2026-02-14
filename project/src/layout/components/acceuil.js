@@ -1,8 +1,15 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchDemande } from "../../redux/userreducer";
+import { useEffect } from "react";
 
 export default function Acceuil() {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.USER.user);
+  const userId = user.id;
+    useEffect(() => {
+       dispatch(fetchDemande(userId)); 
+    }, [userId]);
   const demandes = useSelector((state) => state.USER.user.admin ? state.ADMIN.listedemandes : state.USER.demande) ||  [];
 
   return (

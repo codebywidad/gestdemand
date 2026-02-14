@@ -48,6 +48,7 @@ const userSlice = createSlice ({
             state.user.couleur = action.payload;
             localStorage.setItem("user",JSON.stringify(state.user));
         }
+        
     },
         extraReducers: (builder) => {
             builder.addCase(fetchDemande.fulfilled, (state, action) => {
